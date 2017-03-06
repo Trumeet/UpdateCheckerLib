@@ -15,8 +15,10 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-	```
-将这行依赖添加到 应用 级build.gradle，随后Sync即可完成
+```
+
+将下面这行依赖添加到 应用 级build.gradle，随后Sync即可完成
+
 `compile 'kh.android:UpdateCheckerLib:1.2'`
 
 # 添加权限
