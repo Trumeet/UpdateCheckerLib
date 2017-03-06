@@ -19,7 +19,7 @@ allprojects {
 
 将下面这行依赖添加到 应用 级build.gradle，随后Sync即可完成
 
-`compile 'kh.android:UpdateCheckerLib:1.2'`
+`compile 'com.github.liangyuteng0927:UpdateCheckerLib:v1.2'`
 
 # 添加权限
 检查更新需要添加网络权限，如果没有，需要添加：
