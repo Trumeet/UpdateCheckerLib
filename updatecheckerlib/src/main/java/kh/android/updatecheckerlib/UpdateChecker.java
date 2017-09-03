@@ -49,19 +49,21 @@ public class UpdateChecker {
         UpdateInfo info = new UpdateInfo();
         info.mMarket = market;
         info.mPackageName = packageName;
-        switch (market) {
+        switch (market) {     
             case MARKET_COOLAPK:
                 document = Jsoup.connect("http://coolapk.com/apk/" + packageName).get();
-                info.mVersionName = document.select("dl.dl-horizontal").get(0).select("dd").get(2).text();
-                info.mChangeLog = document.select("div.ex-card-wrapper").get(3).html();
+                info.mVersionName = document.select("span[class=list_app_info]").get(0).html();
+                info.mChangeLog = document.select("p[class=apk_left_title_info]").get(0).html().replaceAll("<br>", "\n");
                 return info;
             case MARKET_GOOGLEPLAY:
                 document = Jsoup.connect("https://play.google.com/store/apps/details?id=" + packageName).get();
                 info.mVersionName = document.select("div[itemprop=softwareVersion]").get(0).html();
                 Elements elements = document.select("div.recent-change");
                 String changeLog = "";
+                String enter = "\n";
                 for (Element element : elements) {
                     changeLog += element.text();
+                    changeLog += enter;
                 }
                 info.mChangeLog = changeLog;
                 return info;
